@@ -14,10 +14,11 @@ class dashboardController extends Controller
 
     public function index()
     {
-        if (!empty(sales::all())) {
+
+        $id_transaksi = sales::latest()->first();
+        if ($id_transaksi === null) {
             $id_transaksi = 0;
         } else {
-
             $id_transaksi = sales::all()->last()->id;
         }
 
